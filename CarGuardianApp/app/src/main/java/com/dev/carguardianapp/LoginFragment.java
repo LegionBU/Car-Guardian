@@ -2,6 +2,7 @@ package com.dev.carguardianapp;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,12 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class LoginFragment extends Fragment {
+    @BindView(R.id.createAcc) TextView createAcc;
 
     View v;
     EditText email_id, password;
-    TextView createAcc;
     Button loginBtn;
 
 
@@ -30,15 +34,17 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_login, container, false);
+        ButterKnife.bind((AppCompatActivity) v.getContext());
 
         init();
 
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Hello. Create Account Pressed", Toast.LENGTH_SHORT).show();
+                ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, new SignUp1()).addToBackStack("login").commit();
             }
         });
+
 
         return v;
     }
