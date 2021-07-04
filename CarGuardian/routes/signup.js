@@ -36,7 +36,7 @@ const sign = async (req, res) => {
   });
 
   if (created) {
-    return res.status(200).json({
+    return res.status(201).json({
       error: false,
       message: "User registered",
     });
