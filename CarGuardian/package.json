@@ -4,14 +4,16 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "start": "npm index.js",
+    "server": "nodemon -r esm index.js",
+    "start": "node -r esm index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "code": "^5.2.4",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "mongoose": "^5.13.1",
     "nodemon": "^2.0.9",

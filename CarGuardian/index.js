@@ -1,24 +1,24 @@
-const connectDB = require("./connection")
-const qrcode = require("./qrcode")
-const express = require("express")
+import connectDB from "./connection";
+import qrcode from "./qrcode";
+import express from "express";
+import sign from "./routes/signup";
 
-const app = express()
+const app = express();
 
-connectDB()
-qrcode("LALALA")
+connectDB();
+qrcode("LALALA");
 
-app.use(express.json({extended: true}))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/", (request, response)=>{
-    response.send("Hello World");
-})
+app.post("/register", sign);
 
-app.get("/about", (request, response)=>{
-    response.send("WE");
-})
+app.get("/about", (request, response) => {
+  response.send("WE");
+});
 
-app.listen(3000, (error)=>{
-    if (error == null ){
-        console.log("Legion")
-    }
-})
+app.listen(3000, (error) => {
+  if (error == null) {
+    console.log("Legion");
+  }
+});
