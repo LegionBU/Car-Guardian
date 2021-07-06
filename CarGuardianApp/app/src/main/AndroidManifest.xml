@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarGuardianApp">
-        <activity android:name=".ScannerActivity"></activity>
-        <activity android:name=".AccountActivity">
+        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
