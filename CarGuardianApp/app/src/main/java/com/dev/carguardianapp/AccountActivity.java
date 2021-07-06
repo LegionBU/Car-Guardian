@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-public class LoginActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     FragmentManager fragmentManager;
 
