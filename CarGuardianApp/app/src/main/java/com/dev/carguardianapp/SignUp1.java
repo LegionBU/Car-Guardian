@@ -16,11 +16,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignUp1 extends Fragment {
-    @BindView(R.id.userImage) ImageView userImage;
+    //@BindView(R.id.userImage) ImageView userImage;
     @BindView(R.id.userName) EditText userName;
     @BindView(R.id.userEmail) EditText userEmail;
     @BindView(R.id.userContact) EditText userContact;
     @BindView(R.id.continueBtn) Button continueBtn;
+    Bundle bundle;
 
 
     public SignUp1() {
@@ -33,8 +34,21 @@ public class SignUp1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sign_up1, container, false);
-
         ButterKnife.bind((AppCompatActivity) v.getContext());
+        bundle = new Bundle();
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignUp2 signUp2 = new SignUp2();
+                bundle.putString("name", userName.getText().toString());
+                bundle.putString("email_id", userEmail.getText().toString());
+                bundle.putString("phone", userContact.getText().toString());
+                signUp2.setArguments(bundle);
+
+                ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame, signUp2).addToBackStack("signup_1").commit();
+            }
+        });
 
         return v;
     }

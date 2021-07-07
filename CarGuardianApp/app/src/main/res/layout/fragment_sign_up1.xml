@@ -109,7 +109,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-    <ImageView
+    <!--ImageView
         android:id="@+id/userImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -121,7 +121,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.215" />
+        app:layout_constraintVertical_bias="0.215" /!-->
 
     <EditText
         android:id="@+id/userName"
