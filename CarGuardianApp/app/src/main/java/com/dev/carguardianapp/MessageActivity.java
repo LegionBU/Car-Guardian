@@ -21,14 +21,12 @@ public class MessageActivity extends AppCompatActivity
         Spinner spinner = (Spinner) findViewById(R.id.msgSpinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
