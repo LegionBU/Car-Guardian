@@ -20,7 +20,8 @@ public class SignUp1 extends Fragment {
     @BindView(R.id.userName) EditText userName;
     @BindView(R.id.userEmail) EditText userEmail;
     @BindView(R.id.userContact) EditText userContact;
-    @BindView(R.id.continueBtn) Button continueBtn;
+    //@BindView(R.id.continueBtn) Button continueBtn;
+    Button continueBtn;
     Bundle bundle;
 
 
@@ -35,6 +36,7 @@ public class SignUp1 extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sign_up1, container, false);
         ButterKnife.bind((AppCompatActivity) v.getContext());
+        continueBtn=v.findViewById(R.id.continueBtn);
         bundle = new Bundle();
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
