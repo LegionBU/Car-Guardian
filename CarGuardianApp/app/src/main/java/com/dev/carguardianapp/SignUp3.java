@@ -7,58 +7,91 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUp3#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.TaskExecutors;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
+
+import butterknife.BindView;
+
+
 public class SignUp3 extends Fragment {
+    EditText otpText1;
+    EditText otpText2;
+    Bundle bundle;
+    View v;
+    String phnNumber;
+    private void sendVerificationCode() {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91" + phnNumber,
+                60,
+                TimeUnit.SECONDS,
+                TaskExecutors.MAIN_THREAD,
+                mCallbacks);
+    }
+String mVerificationId, mResendToken;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+            //Getting the code sent by SMS
+            String code = phoneAuthCredential.getSmsCode();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+            //sometime the code is not detected automatically
+            //in this case the code will be null
+            //so user has to manually enter the code
+            if (code != null) {
+                //verifying the code
+                verifyVerificationCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(FirebaseException e) {
+            Toast.makeText(VerifyPhoneActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            mVerificationId = s;
+            mResendToken = forceResendingToken;
+        }
+    };
+    private void verifyVerificationCode(String otp) {
+        //creating the credential
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp);
+    }
+
+
 
     public SignUp3() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SignUp3.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SignUp3 newInstance(String param1, String param2) {
-        SignUp3 fragment = new SignUp3();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up3, container, false);
+        v = inflater.inflate(R.layout.fragment_sign_up3, container, false);
+        init();
+
+
+
+        return v;
     }
+
+    void init(){
+        bundle = getArguments();
+        phnNumber = bundle.getString("phone");
+
+        otpText1 = v.findViewById(R.id.otptext3);
+        otpText2 = v.findViewById(R.id.otptext6);
+    }
+
+    void senVerificationCode()
 }
