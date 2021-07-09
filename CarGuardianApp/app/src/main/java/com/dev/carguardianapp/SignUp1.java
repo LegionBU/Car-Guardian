@@ -17,11 +17,13 @@ import butterknife.ButterKnife;
 
 public class SignUp1 extends Fragment {
     //@BindView(R.id.userImage) ImageView userImage;
-    @BindView(R.id.userName) EditText userName;
-    @BindView(R.id.userEmail) EditText userEmail;
-    @BindView(R.id.userContact) EditText userContact;
-    //@BindView(R.id.continueBtn) Button continueBtn;
+    EditText userName;
+    EditText userEmail;
+    EditText userContact;
     Button continueBtn;
+    View v;
+    //Button continueBtn;
+
     Bundle bundle;
 
 
@@ -34,10 +36,9 @@ public class SignUp1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_sign_up1, container, false);
-        ButterKnife.bind((AppCompatActivity) v.getContext());
-        continueBtn=v.findViewById(R.id.continueBtn);
-        bundle = new Bundle();
+        v = inflater.inflate(R.layout.fragment_sign_up1, container, false);
+
+        init();
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,5 +54,13 @@ public class SignUp1 extends Fragment {
         });
 
         return v;
+    }
+
+    void init(){
+        bundle = new Bundle();
+        userName = v.findViewById(R.id.userName);
+        userEmail = v.findViewById(R.id.userEmail);
+        userContact = v.findViewById(R.id.userContact);
+        continueBtn = v.findViewById(R.id.continueBtn);
     }
 }

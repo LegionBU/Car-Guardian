@@ -18,8 +18,8 @@ import butterknife.ButterKnife;
 
 
 public class LoginFragment extends Fragment {
-    @BindView(R.id.createAcc) TextView createAcc;
 
+    TextView createAcc;
     View v;
     EditText email_id, password;
     Button loginBtn;
@@ -34,7 +34,6 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_login, container, false);
-        ButterKnife.bind((AppCompatActivity) v.getContext());
 
         init();
 
@@ -50,6 +49,7 @@ public class LoginFragment extends Fragment {
     }
 
     void init(){
+        ButterKnife.bind(v);
         email_id = v.findViewById(R.id.enter_email);
         password = v.findViewById(R.id.enter_password);
         createAcc = v.findViewById(R.id.createAcc);

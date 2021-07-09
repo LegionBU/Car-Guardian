@@ -15,10 +15,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignUp2 extends Fragment {
-    @BindView(R.id.car_Model) EditText carModel;
-    @BindView(R.id.reg_No) EditText reg_No;
-    @BindView(R.id.continueBtn) Button continue_btn;
+    EditText carModel;
+    EditText reg_No;
+    Button continue_btn;
     Bundle bundle;
+    View v;
+
     public SignUp2()
     {
 
@@ -27,9 +29,11 @@ public class SignUp2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_sign_up2, container, false);
-        ButterKnife.bind((AppCompatActivity) v.getContext());
-        bundle=getArguments();
+        v = inflater.inflate(R.layout.fragment_sign_up2, container, false);
+        ButterKnife.bind((AppCompatActivity) v.getContext(), v);
+
+        init();
+
         continue_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -42,5 +46,12 @@ public class SignUp2 extends Fragment {
             }
         });
         return v;
+    }
+
+    void init(){
+        bundle = getArguments();
+        carModel = v.findViewById(R.id.car_Model);
+        reg_No = v.findViewById(R.id.reg_No);
+        continue_btn = v.findViewById(R.id.continueBtn);
     }
 }
