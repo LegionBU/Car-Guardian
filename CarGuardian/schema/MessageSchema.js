@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const message = new mongoose.Schema({
+
+const Message = new mongoose.Schema({
     sender: {
     type: String,
     },
@@ -28,5 +29,4 @@ const message = new mongoose.Schema({
     }
 })
 
-const Message = mongoose.model("Message", Message);
-export default Message;
+export default mongoose.model("Message", Message);
