@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageActivity extends AppCompatActivity
+public class SendMessageActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
