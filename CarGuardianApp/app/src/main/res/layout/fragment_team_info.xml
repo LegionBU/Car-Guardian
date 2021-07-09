@@ -23,6 +23,7 @@
         android:id="@+id/imageView9"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/ari"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -31,6 +32,7 @@
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="0dp"
+        android:background="@drawable/suyash"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -51,6 +53,7 @@
         android:id="@+id/imageView13"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/sid"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
