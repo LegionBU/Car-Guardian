@@ -67,7 +67,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/download_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginTop="24dp"
@@ -199,7 +199,7 @@
         android:layout_height="64dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_info"
+        android:background="@drawable/scn_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -211,7 +211,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/download_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
