@@ -15,13 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarGuardianApp">
-        <activity android:name=".InboxActivity"><intent-filter>
+        <activity android:name=".InboxActivity"></activity>
+        <activity android:name=".SendMessageActivity" />
+        <activity android:name=".AccountActivity"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".SendMessageActivity" />
-        <activity android:name=".AccountActivity">
+        </intent-filter>
 
         </activity>
         <activity android:name=".Dashboard">
