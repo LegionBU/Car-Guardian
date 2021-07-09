@@ -17,7 +17,7 @@
         android:background="@drawable/rounded_input"
         android:backgroundTint="@color/white"
         android:hint="Re-Enter Password"
-        android:inputType="textVisiblePassword"
+        android:inputType="textPassword"
         android:padding="8dp"
         android:textColorHint="#000"
         android:textSize="12sp"
