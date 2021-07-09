@@ -19,28 +19,7 @@ public class InboxActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
-        Spinner spinner = (Spinner) findViewById(R.id.msgSpinner);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        List<String> categories = new ArrayList<String>();
-        categories.add("HeadLights on.");
-        categories.add("Windows open");
-        categories.add("Car is on.");
-        categories.add("Tyre Punctured");
-        categories.add("Car Unlocked");
-        categories.add("Other");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
 
     }
 
