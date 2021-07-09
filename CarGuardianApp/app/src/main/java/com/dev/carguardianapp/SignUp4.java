@@ -7,58 +7,95 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUp4#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUp4 extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View v;
+    TextView enterPass, confirmPass;
+    Button continueBtn;
+    Bundle bundle;
 
     public SignUp4() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SignUp4.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SignUp4 newInstance(String param1, String param2) {
-        SignUp4 fragment = new SignUp4();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up4, container, false);
+        v = inflater.inflate(R.layout.fragment_sign_up4, container, false);
+
+        init();
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!enterPass.getText().toString().equals(confirmPass.getText().toString())){
+
+                    confirmPass.setText("");
+                    confirmPass.setError("Passwords Dont Match");
+
+                }else {
+
+                    StringRequest request = new StringRequest(Request.Method.POST, Constants.register_url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject responseObject = new JSONObject(response);
+                                if(!responseObject.getBoolean("error")){
+                                    Toast.makeText(getContext(), "User registered sucessfully", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getContext(), responseObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> map = new HashMap<>();
+                            map.put("name", bundle.getString("name"));
+                            map.put("email", bundle.getString("email_id"));
+                            map.put("mobile", bundle.getString("phone"));
+                            map.put("password", confirmPass.getText().toString());
+                            map.put("car_model", bundle.getString("model"));
+                            map.put("reg_no",bundle.getString("reg_no") );
+                            return map;
+                        }
+                    };
+
+                    RequestHandler.getInstance(getContext()).addToRequestQueue(request);
+                }
+            }
+        });
+
+        return v;
+    }
+
+    void init(){
+        bundle = getArguments();
+        enterPass = v.findViewById(R.id.enterPassword);
+        confirmPass = v.findViewById(R.id.confirmPassword);
+        continueBtn = v.findViewById(R.id.continueBtn);
     }
 }

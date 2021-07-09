@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextWatcher;
@@ -89,7 +90,9 @@ public class SignUp3 extends Fragment {
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         Toast.makeText(getContext(), "Phone Number Verified Successfully", Toast.LENGTH_SHORT).show();
-
+        SignUp4 su4 = new SignUp4();
+        su4.setArguments(bundle);
+        ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.frame,su4).addToBackStack("SignUp2").commit();
     }
 
 

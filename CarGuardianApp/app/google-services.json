@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "127769588004-udsleb160q4agp5q8soo3p8d7cc23hco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.carguardianapp",
+            "certificate_hash": "de2a57bf195da78aafadd301f236eaebe65cf079"
+          }
+        },
+        {
           "client_id": "127769588004-8lmt05e6hk8uv720fcffkgpo9djdgmdp.apps.googleusercontent.com",
           "client_type": 3
         }
