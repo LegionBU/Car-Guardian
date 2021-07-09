@@ -16,7 +16,6 @@ const message = new mongoose.Schema({
     },
     date_sent: {
     type: Number,
-    required: true,
     value: Date.now(),
     },
     msg_type: {
