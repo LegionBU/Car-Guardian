@@ -3,6 +3,7 @@ import express from "express";
 import sign from "./routes/signup";
 import login from "./routes/login";
 import userInfo from "./routes/userinfo";
+import message from "./routes/message";
 
 const app = express();
 
@@ -13,9 +14,9 @@ app.use(express.json());
 
 
 app.post("/register", sign);
-app.post("/login", login);
+app.get("/login", login);
 app.post("/userinfo", userInfo);
-
+app.post("/message", message)
 
 app.listen(3000, (error) => {
   if (error == null) {

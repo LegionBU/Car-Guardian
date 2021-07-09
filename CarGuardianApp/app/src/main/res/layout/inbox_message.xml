@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/colorSecondary"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Name"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textViewShortDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTitle"
+                android:layout_alignStart="@+id/textViewTitle"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Selected Option"
+                android:textSize="12dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewShortDesc"
+                android:layout_alignStart="@+id/textViewShortDesc"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/oxanium"
+                android:textSize="10dp"
+                android:text="Message"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textViewTitle"
+
+                android:layout_alignRight="@id/textViewTitle"
+                android:layout_alignBottom="@+id/textViewTitle"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="-12dp"
+                android:layout_marginBottom="-33dp"
+                android:layout_toEndOf="@+id/textViewTitle"
+                android:text="Date" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
