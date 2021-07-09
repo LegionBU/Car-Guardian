@@ -1,11 +1,12 @@
-import connectDB from "./connection";
+import connectDB from "../connection.js";
 import express from "express";
-import sign from "./routes/signup";
-import login from "./routes/login";
-import userInfo from "./routes/userinfo";
-import message from "./routes/message";
+import sign from "../routes/signup.js";
+import login from "../routes/login.js";
+import userInfo from "../routes/userinfo.js";
+import message from "../routes/message.js";
 
 const app = express();
+const functions = require("firebase-functions");
 
 connectDB();
 
@@ -23,3 +24,5 @@ app.listen(3000, (error) => {
     console.log("Legion");
   }
 });
+
+exports.app = functions.https.onRequest(app);

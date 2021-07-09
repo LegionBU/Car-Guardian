@@ -1,4 +1,4 @@
-import User from "../schema/UserSchema";
+import User from "../schema/UserSchema.js";
 import { compare } from "bcrypt";
 
 const login = async (req, res) => {

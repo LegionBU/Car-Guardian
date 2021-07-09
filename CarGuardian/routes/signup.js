@@ -1,6 +1,6 @@
 import { hash as createHash, genSalt } from "bcrypt";
-import User from "../schema/UserSchema";
-import generateQR from "../components/qrcode";
+import User from "../schema/UserSchema.js";
+import generateQR from "../components/qrcode.js";
 
 const sign = async (req, res) => {
   const { name, car_model, email, password, mobile, reg_no } = req.body;

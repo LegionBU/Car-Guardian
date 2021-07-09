@@ -1,4 +1,4 @@
-import User from "../schema/UserSchema";
+import User from "../schema/UserSchema.js";
 
 const userInfo = async(req, res) => {
     const {id} = req.body;

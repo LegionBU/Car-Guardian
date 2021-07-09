@@ -1,4 +1,4 @@
-import Message from "../schema/MessageSchema";
+import Message from "../schema/MessageSchema.js";
 
 const message = async (req, res) => {
     const {recipient_id, msg, msg_type, image} = req.body;
